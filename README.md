@@ -116,3 +116,45 @@ Exclusividade Mútua: O consumo de água não pode pertencer a duas faixas simul
 Hierarquia de Faixas: A estrutura elif permite testar os limites de forma sequencial. Como o código testa primeiro se o valor é menor que 10, no segundo teste (elif consumo <= 20) o programa já "sabe" implicitamente que o valor é maior que 10, dispensando verificações redundantes como if consumo > 10 and consumo <= 20.
 
 Tratamento de Excedentes: O bloco else final funciona como um "capturador" para qualquer valor que não se enquadre nas regras anteriores (neste caso, qualquer valor estritamente maior que 50), garantindo que o programa sempre forneça uma resposta.
+
+4. Desenvolver um programa que leia um número de 1 a 7 e exiba o dia da semana:
+   1 - 'Domingo'
+   2 - 'Segunda'
+   3 - 'Terça'
+   4 - 'Quarta'
+   5 - 'Quinta'
+   6 - 'Sexta'
+   7 - 'Sábado'
+Qualquer outro numero exibir: 'Opção inválida!'
+
+# Lê a entrada do usuário e converte para número inteiro
+dia = int(input("Digite um número de 1 a 7: "))
+# Estrutura condicional para verificar o dia correspondente
+if dia == 1:
+    print("Domingo")
+elif dia == 2:
+    print("Segunda")
+elif dia == 3:
+    print("Terça")
+elif dia == 4:
+    print("Quarta")
+elif dia == 5:
+    print("Quinta")
+elif dia == 6:
+    print("Sexta")
+elif dia == 7:
+    print("Sábado")
+else:
+    # Executado caso nenhuma das condições anteriores seja verdadeira
+    print("Opção inválida!")
+
+Justificativa das Estruturas de Decisão
+
+Neste programa, utilize a estrutura if / elif / else:
+
+if (Se): É a porta de entrada. O programa testa a primeira condição (se o número é 1).
+
+elif (Senão se): Abreviação de else if. É ideal aqui porque os dias da semana são mutuamente exclusivos (um número não pode ser 2 e 3 ao mesmo tempo). Assim que o computador encontra uma condição verdadeira, ele ignora todas as seguintes, o que torna o código mais eficiente.
+
+else (Senão): Funciona como um "filtro de segurança" ou caso padrão. Se o usuário digitar 0, 8 ou qualquer outro valor que não esteja mapeado, o else garante que o programa dê uma resposta clara (Opção inválida) em vez de simplesmente não fazer nada.
+
