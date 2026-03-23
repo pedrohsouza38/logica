@@ -503,3 +503,145 @@ Faixas Salariais (Progressividade): O INSS e o IRRF não utilizam uma porcentage
 Limite (Teto): O INSS possui um valor máximo de desconto, independentemente de quanto o salário ultrapasse o teto. A estrutura else final garante que, se o salário for maior que R$ 7.786,02, o desconto seja travado no teto, não cobrando mais do que o permitido.
 
 Isenção IRRF: Estruturas de decisão determinam que salários abaixo de um certo valor (base após INSS) tenham IRRF zero.
+
+10 - Desenvolva um programa que pergunte em que turno você estuda. 
+Peça para digitar: M-Matutino ou V-Vespertino ou N- Noturno. 
+Imprima a mensagem "Bom Dia!", "Boa Tarde!" ou "Boa Noite!" ou "Valor Inválido!", conforme o caso.
+
+turno = input("Em que turno você estuda? (M-Matutino, V-Vespertino, N-Noturno): ").upper()
+
+if turno == 'M':
+    # Se M, exibe Bom Dia
+    print("Bom Dia!")
+elif turno == 'V':
+    # Se V, exibe Boa Tarde
+    print("Boa Tarde!")
+elif turno == 'N':
+    # Se N, exibe Boa Noite
+    print("Boa Noite!")
+else:
+    # Se nenhuma das opções acima, exibe Valor Inválido
+    print("Valor Inválido!")
+
+Explicação/Justificativa das Estruturas de Decisão
+
+if / elif / else: Utilizamos essa estrutura (if - "se", elif - "senão se", else - "senão") pois o programa precisa tomar uma decisão baseada no valor inserido pelo usuário.
+
+Encadeamento: O if verifica a primeira condição (M). Se não for verdadeira, o primeiro elif verifica a segunda (V), e assim por diante. Isso garante que apenas uma das mensagens seja impressa.
+
+else (Valor Inválido): O else final captura qualquer entrada que não seja 'M', 'V' ou 'N', garantindo que o programa trate entradas incorretas e informe o usuário.
+
+.upper(): Usado no input() para garantir que letras minúsculas (m, v, n) também sejam aceitas, melhorando a usabilidade.
+
+11 - Desenvolva um programa que recebe o salário de um funcionário e determine o reajuste segundo o seguinte critério, baseado no salário atual:
+  salários até R$ 1000,00 (incluindo)     : aumento de 20%
+  salários até R$ 1.700,00                : aumento de 15%
+  salários até R$ 2.300,00                : aumento de 10%
+  salários acima de R$ 2.300,00 em diante : aumento de 5%
+
+Após o processamento exibir na tela:
+  o salário antes do reajuste;
+  o percentual de aumento aplicado;
+  o valor do aumento;
+  o novo salário, após o aumento.
+
+Exemplo:
+Salário digitado: R$ 1.900,00
+Aumento         : 10%
+Valor do aumento: R$ 190,00
+Novo salário    : R$ 2.090,00
+
+salario_atual = float(input("Digite o salário atual do funcionário: R$ "))
+
+if salario_atual <= 1000:
+    percentual = 20
+elif salario_atual <= 1700:
+    percentual = 15
+elif salario_atual <= 2300:
+    percentual = 10
+else:
+    percentual = 5
+
+valor_aumento = salario_atual * (percentual / 100)
+novo_salario = salario_atual + valor_aumento
+
+print(f"\nSalário antes do reajuste: R$ {salario_atual:.2f}")
+print(f"Percentual de aumento aplicado: {percentual}%")
+print(f"Valor do aumento: R$ {valor_aumento:.2f}")
+print(f"Novo salário, após o aumento: R$ {novo_salario:.2f}")
+
+Justificativa do uso das estruturas
+
+1. Por que utilizar if-elif-else?
+
+Esta estrutura foi escolhida porque as condições de salário são mutuamente exclusivas. Ou seja, um salário não pode pertencer a duas faixas de aumento ao mesmo tempo.
+
+O elif (else if) garante que, assim que o programa encontrar a primeira condição verdadeira, ele execute o bloco correspondente e ignore os demais testes, tornando o código mais rápido e legível.
+
+Se usássemos apenas vários if simples, o programa testaria todas as condições desnecessariamente, mesmo já tendo encontrado a correta.
+
+2. Lógica das Faixas
+
+salario_atual <= 1000: Captura a primeira faixa (20%).
+
+elif salario_atual <= 1700: Como o código só chega aqui se a primeira condição for falsa, sabemos automaticamente que o salário é maior que 1000. Portanto, basta testar o limite superior de 1700.
+
+else: Atua como uma "rede de segurança" para qualquer valor que não se enquadre nas faixas anteriores (neste caso, qualquer valor estritamente acima de 2300).
+
+3. Formatação Numérica
+
+Utilizamos o modificador :.2f nas f-strings para garantir que os valores monetários sejam exibidos com duas casas decimais, respeitando o padrão financeiro.
+
+12. Desenvolva um programa que leia quatro notas bimestrais obtidas por um aluno numa disciplina ao longo de um semestre, e calcule a sua média final. A atribuição de conceitos obedece à tabela abaixo:
+  Média de Aproveitamento  Conceito
+  Entre 9.0 e 10.0        A
+  Entre 7.5 e 8.9         B
+  Entre 6.0 e 7.4         C
+  Entre 4.0 e 5.9         D
+  Entre zero e 3.9        E
+O programa deve exibir na tela:
+  1. As quatro notas bimestrais,
+  2. A média final,
+  3. O conceito correspondente e,
+  4. A mensagem "APROVADO" ou "Reprovado" de acordo com a regra a seguir:
+     4.1. Se o conceito       for A, B ou C    exibir "APROVADO"
+     4.2. Senão se o conceito for D ou E       exibir "REPROVADO"
+
+n1 = float(input("Digite a 1ª nota: "))
+n2 = float(input("Digite a 2ª nota: "))
+n3 = float(input("Digite a 3ª nota: "))
+n4 = float(input("Digite a 4ª nota: "))
+
+media = (n1 + n2 + n3 + n4) / 4
+
+if 9.0 <= media <= 10.0:
+    conceito = "A"
+elif 7.5 <= media < 9.0:
+    conceito = "B"
+elif 6.0 <= media < 7.5:
+    conceito = "C"
+elif 4.0 <= media < 6.0:
+    conceito = "D"
+else:
+    conceito = "E"
+
+if conceito in ["A", "B", "C"]:
+    situacao = "APROVADO"
+else:
+    situacao = "REPROVADO"
+
+print(f"\n--- Resultado Final ---")
+print(f"Notas: {n1}, {n2}, {n3}, {n4}")
+print(f"Média Final: {media:.1f}")
+print(f"Conceito: {conceito}")
+print(f"Situação: {situacao}")
+
+Justificativa das Estruturas de Decisão
+
+Neste programa, utiliza estruturas de controle condicional (if, elif, else):
+
+Encadeamento (if/elif/else): Essencial para a atribuição do Conceito. Como as faixas de notas são excludentes (uma nota não pode ser "A" e "B" ao mesmo tempo), o elif garante que o programa pare de testar as condições assim que encontrar a faixa correta, tornando o código eficiente e evitando erros de lógica.
+
+Operadores de Comparação: Utiliza >= e < para definir com precisão os limites de cada nota, garantindo que o programa saiba exatamente o que fazer com valores de transição (como um 7.5 ou 9.0).
+
+Verificação de Pertencimento (in): Na parte da aprovação, em vez de repetir vários "ou", verifica se o conceito gerado está dentro da lista de conceitos positivos. Isso simplifica a leitura do código.
