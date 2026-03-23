@@ -217,9 +217,12 @@ elif (Senão se): Abreviação de else if. É ideal aqui porque os dias da seman
 
 else (Senão): Funciona como um "filtro de segurança" ou caso padrão. Se o usuário digitar 0, 8 ou qualquer outro valor que não esteja mapeado, o else garante que o programa dê uma resposta clara (Opção inválida) em vez de simplesmente não fazer nada.
 
-5. Desenvolver um programa que leia o peso e a altura de uma pessoa e calcule seu imc utilizando a fórmula: 
+5. Desenvolver um programa que leia o peso e a altura de uma pessoa e calcule seu imc utilizando a fórmula:
+
 imc = peso / altura ^ altura
+
 Com o imc exiba para o usuário seu imc e a classificação:
+
 IMC		Classificação
 < 16		'Magreza grave'
 16 a < 17	'Magreza moderada'
