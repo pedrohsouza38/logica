@@ -116,7 +116,3 @@ Exclusividade Mútua: O consumo de água não pode pertencer a duas faixas simul
 Hierarquia de Faixas: A estrutura elif permite testar os limites de forma sequencial. Como o código testa primeiro se o valor é menor que 10, no segundo teste (elif consumo <= 20) o programa já "sabe" implicitamente que o valor é maior que 10, dispensando verificações redundantes como if consumo > 10 and consumo <= 20.
 
 Tratamento de Excedentes: O bloco else final funciona como um "capturador" para qualquer valor que não se enquadre nas regras anteriores (neste caso, qualquer valor estritamente maior que 50), garantindo que o programa sempre forneça uma resposta.
-   6 - 'Sexta'
-   7 - 'Sábado'
-Qualquer outro numero exibir: 'Opção inválida!'
-
