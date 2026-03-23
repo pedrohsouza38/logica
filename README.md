@@ -11,7 +11,6 @@ residencia_social.py
 
 # Leitura do consumo de água (entrada do usuário)
 consumo = float(input("Digite o consumo de água em m³: "))
-
 # Estrutura condicional para determinar a tarifa
 if consumo <= 10:
     # Taxa fixa para consumo até 10m³
@@ -28,7 +27,6 @@ elif consumo <= 50:
 else:
     # Cálculo por m³ para consumo acima de 50m³
     valor_conta = consumo * 7.31
-
 # Exibição do resultado formatado com duas casas decimais
 print(f"O valor da conta de água é: R$ {valor_conta:.2f}")
 
@@ -51,7 +49,6 @@ residencia_normal.py
 
 # Leitura do consumo de água fornecido pelo usuário
 consumo = float(input("Digite o consumo de água em m3: "))
-
 # Estrutura de decisão para determinar o valor da conta
 if consumo <= 10:
     # Faixa 1: Taxa mínima fixa
@@ -65,7 +62,6 @@ elif consumo <= 50:
 else:
     # Faixa 4: Valor por m3 para consumo acima de 50
     valor_conta = consumo * 9.64
-
 # Exibição do resultado formatado com duas casas decimais
 print(f"O valor da conta de água é: R$ {valor_conta:.2f}")
 
@@ -93,27 +89,21 @@ def calcular_conta_agua():
     except ValueError:
         print("Por favor, insira um valor numérico válido.")
         return
-
     # Estrutura de decisão para determinar o valor da conta
     # Faixa 1: Consumo mínimo (Taxa fixa)
     if consumo <= 10:
         valor_conta = 44.95
-    
     # Faixa 2: Consumo entre 10.1 e 20 m³
     elif consumo <= 20:
         valor_conta = consumo * 8.75
-    
     # Faixa 3: Consumo entre 20.1 e 50 m³
     elif consumo <= 50:
         valor_conta = consumo * 16.76
-    
     # Faixa 4: Consumo acima de 50 m³
     else:
         valor_conta = consumo * 17.46
-
     # Exibe o resultado formatado
     print(f"O valor da conta para um consumo de {consumo}m³ é: R$ {valor_conta:.2f}")
-
 # Executa a função
 calcular_conta_agua()
 
