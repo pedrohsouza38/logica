@@ -217,3 +217,52 @@ elif (Senão se): Abreviação de else if. É ideal aqui porque os dias da seman
 
 else (Senão): Funciona como um "filtro de segurança" ou caso padrão. Se o usuário digitar 0, 8 ou qualquer outro valor que não esteja mapeado, o else garante que o programa dê uma resposta clara (Opção inválida) em vez de simplesmente não fazer nada.
 
+5. Desenvolver um programa que leia o peso e a altura de uma pessoa e calcule seu imc utilizando a fórmula: 
+imc = peso / altura ^ altura
+Com o imc exiba para o usuário seu imc e a classificação:
+IMC		Classificação
+< 16		'Magreza grave'
+16 a < 17	'Magreza moderada'
+17 a < 18,5	'Magreza leve'
+18,5 a < 25	'Saudável'
+25 a < 30	'Sobrepeso'
+30 a < 35	'Obesidade Grau I'
+35 a < 40	'Obesidade Grau II (severa)'
+≥ 40		'Obesidade Grau III (mórbida)'
+
+peso = float(input("Digite seu peso (kg): "))
+
+altura = float(input("Digite sua altura (m): "))
+
+imc = peso / (altura ** 2)
+
+print(f"Seu IMC é: {imc:.1f}")
+
+if imc < 16:
+    classificacao = "Magreza grave"
+elif 16 <= imc < 17:
+    classificacao = "Magreza moderada"
+elif 17 <= imc < 18.5:
+    classificacao = "Magreza leve"
+elif 18.5 <= imc < 25:
+    classificacao = "Saudável"
+elif 25 <= imc < 30:
+    classificacao = "Sobrepeso"
+elif 30 <= imc < 35:
+    classificacao = "Obesidade Grau I"
+elif 35 <= imc < 40:
+    classificacao = "Obesidade Grau II (severa)"
+else: # IMC >= 40
+    classificacao = "Obesidade Grau III (mórbida)"
+
+print(f"Classificação: {classificacao}")
+
+Justificativa das Estruturas de Decisão
+
+As estruturas if, elif (else if) e else foram utilizadas para criar uma lógica de seleção exclusiva, onde apenas um dos cenários é verdadeiro para o valor de imc. 
+
+Ordem Lógica: As faixas são verificadas em ordem crescente (< 16, depois < 17, etc.). Se o IMC for 15, a primeira condição (<16) é verdadeira, o programa classifica e pula todas as outras validações, otimizando o processo.
+
+Múltiplas Condições: O uso de elif permite que o programa verifique diversas faixas de valores consecutivas de forma organizada.
+
+Cenário Padrão (else): O else final captura automaticamente qualquer valor igual ou superior a 40 (Obesidade Grau III), garantindo que todo possível resultado de IMC seja classificado.
