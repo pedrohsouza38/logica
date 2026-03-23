@@ -302,3 +302,138 @@ if (Equilátero): Checa se todos os lados são iguais (a==b==c) logo após a ver
 elif (Isósceles): Caso não seja equilátero, verifica se pelo menos dois lados são iguais.
 
 else (Escaleno): Se não for equilátero nem isósceles, a única opção restante é que todos os lados sejam diferentes.
+
+7. Desenvolva um programa que exiba na tela um menu de opções:
+
+   1 - Opção 1
+   2 - Opção 2
+   3 - Opção 3
+   4 - Sair
+   Digite uma opção: 
+Se o usuário digitar 1, exibir na tela: 'Você selecionou a opção 1'
+Se o usuário digitar 2, exibir na tela: 'Você selecionou a opção 2'
+Se o usuário digitar 3, exibir na tela: 'Você selecionou a opção 3'
+Se o usuário digitar 4, exibir na tela: 'Você selecionou sair'
+Se o usuário digitar uma opção diferente das apresentadas no menu, exibir 'Opção inválida!!!'
+Exibir no final do processamento 'Fim do programa!'
+
+print("1 - Opção 1")
+print("2 - Opção 2")
+print("3 - Opção 3")
+print("4 - Sair")
+
+opcao = input("Digite uma opção: ")
+
+if opcao == '1':
+    print("Você selecionou a opção 1")
+elif opcao == '2':
+    print("Você selecionou a opção 2")
+elif opcao == '3':
+    print("Você selecionou a opção 3")
+elif opcao == '4':
+    print("Você selecionou sair")
+else:
+    # Se nenhuma das anteriores for verdadeira, exibe erro
+    print("Opção inválida!!!")
+
+print("Fim do programa!")
+
+Justificativa das Estruturas de Decisão
+
+if: É a estrutura principal que avalia a primeira condição (opcao == '1'). Se for verdadeira, o bloco dentro dela é executado.
+
+elif (else if): Utilizado para verificar outras condições (2, 3, 4) caso as anteriores sejam falsas. Isso torna o código mais eficiente e legível do que usar múltiplos ifs, garantindo que apenas uma opção seja executada.
+
+else: Funciona como uma alternativa padrão. Se o usuário digitar qualquer coisa diferente de '1', '2', '3' ou '4', o else captura essa entrada e exibe 'Opção inválida!!!'. 
+
+8. Desenvolva um calculadora que receba dois números e efetue uma das seguintes operações aritméticas:
+
+   1 - Adição
+   2 - Subtração
+   3 - Multiplicação
+   4 - Divisão
+   5 - Potência
+   6 - Raiz quadrada
+   7 - Número par
+   8 - Número ímpar
+
+import math # Importa a biblioteca math para raiz quadrada
+
+def calculadora():
+    print("--- Calculadora Aritmética ---")
+    print("1 - Adição")
+    print("2 - Subtração")
+    print("3 - Multiplicação")
+    print("4 - Divisão")
+    print("5 - Potência")
+    print("6 - Raiz quadrada (1º número)")
+    print("7 - Número par")
+    print("8 - Número ímpar")
+    
+    # Recebe a opção do usuário
+    opcao = input("\nEscolha a operação (1-8): ")
+
+    # Estrutura de Decisão para validar se precisa de dois números ou apenas um
+    if opcao in ('1', '2', '3', '4', '5'):
+        num1 = float(input("Digite o primeiro número: "))
+        num2 = float(input("Digite o segundo número: "))
+    elif opcao in ('6', '7', '8'):
+        num1 = float(input("Digite o número: "))
+        num2 = 0 # Define um valor padrão para operações unárias
+    else:
+        print("Opção inválida!")
+        return
+
+    # --- Estrutura de Decisão: match-case (Python 3.10+) ---
+    # Justificativa: O match-case é ideal para menus, pois compara a 'opcao' 
+    # com múltiplos valores possíveis de forma limpa e eficiente, funcionando 
+    # como um "switch" em outras linguagens.
+    match opcao:
+        case '1':
+            print(f"Resultado: {num1 + num2}")
+        case '2':
+            print(f"Resultado: {num1 - num2}")
+        case '3':
+            print(f"Resultado: {num1 * num2}")
+        case '4':
+            # Estrutura de Decisão interna para tratar erro de divisão por zero
+            if num2 != 0:
+                print(f"Resultado: {num1 / num2}")
+            else:
+                print("Erro: Divisão por zero não permitida.")
+        case '5':
+            print(f"Resultado: {num1 ** num2}")
+        case '6':
+            # Estrutura de Decisão interna para raiz de números negativos
+            if num1 >= 0:
+                print(f"Resultado: {math.sqrt(num1)}")
+            else:
+                print("Erro: Raiz quadrada de número negativo.")
+        case '7':
+            if num1 % 2 == 0:
+                print(f"{num1} é par.")
+            else:
+                print(f"{num1} não é par.")
+        case '8':
+            if num1 % 2 != 0:
+                print(f"{num1} é ímpar.")
+            else:
+                print(f"{num1} não é ímpar.")
+        case _:
+            print("Opção inválida!")
+            
+calculadora()
+
+Justificativa/Explicação das Estruturas de Decisão
+
+if-elif-else (Entrada de dados): Utilizado inicialmente para decidir quantos números o usuário precisa inserir. Como as operações 6, 7 e 8 exigem apenas um número e as outras dois, essa estrutura economiza tempo do usuário.
+
+match-case (Seleção de Operação): Selecionado para processar a opcao digitada. Ele é superior a múltiplos if/else quando há um menu com muitas opções fixas (1 a 8), tornando o código mais legível e organizado.
+
+if-else (Validação/Lógica):
+
+Divisão (Opção 4): Verifica if num2 != 0 para evitar o erro de ZeroDivisionError.
+
+Raiz (Opção 6): Verifica if num1 >= 0 para evitar erro com números imaginários.
+
+Par/Ímpar (Opção 7/8): Utiliza o operador de módulo (%) para decidir se o resto da divisão por 2 é zero (par) ou diferente de zero (ímpar).
