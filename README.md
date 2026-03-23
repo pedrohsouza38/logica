@@ -266,3 +266,39 @@ Ordem Lógica: As faixas são verificadas em ordem crescente (< 16, depois < 17,
 Múltiplas Condições: O uso de elif permite que o programa verifique diversas faixas de valores consecutivas de forma organizada.
 
 Cenário Padrão (else): O else final captura automaticamente qualquer valor igual ou superior a 40 (Obesidade Grau III), garantindo que todo possível resultado de IMC seja classificado.
+
+6. Desenvolva um programa que peça os 3 lados de um triângulo. O programa deverá informar se os valores podem formam um triângulo e se formarem exibir na tela se é equilátero, isósceles ou escaleno.
+
+Sabemos que:
+Três lados formam um triângulo quando a soma de quaisquer dois lados for maior que o terceiro;
+Triângulo Equilátero: três lados iguais;
+Triângulo Isósceles: quaisquer dois lados iguais;
+Triângulo Escaleno: três lados diferentes;
+
+
+lado_a = float(input("Digite o valor do lado A: "))
+lado_b = float(input("Digite o valor do lado B: "))
+lado_c = float(input("Digite o valor do lado C: "))
+
+if (lado_a + lado_b > lado_c) and (lado_a + lado_c > lado_b) and (lado_b + lado_c > lado_a):
+    print("Os valores formam um triângulo: ", end="")
+    
+    # Estruturas de decisão para classificar o tipo de triângulo [3, 8]
+    if lado_a == lado_b == lado_c:
+        print("Equilátero (três lados iguais).")
+    elif lado_a == lado_b or lado_a == lado_c or lado_b == lado_c:
+        print("Isósceles (dois lados iguais).")
+    else:
+        print("Escaleno (três lados diferentes).")
+else:
+    print("Os valores NÃO formam um triângulo.")
+
+Justificativa das Estruturas de Decisão
+
+if (principal): Utilizado para verificar a condição de existência do triângulo. Sem ele, poderíamos classificar valores inválidos (ex: 1, 1, 10).
+
+if (Equilátero): Checa se todos os lados são iguais (a==b==c) logo após a verificação principal, pois é a condição mais restritiva.
+
+elif (Isósceles): Caso não seja equilátero, verifica se pelo menos dois lados são iguais.
+
+else (Escaleno): Se não for equilátero nem isósceles, a única opção restante é que todos os lados sejam diferentes.
